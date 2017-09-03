@@ -1,0 +1,28 @@
+{
+  "name": "Ship",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "capacity": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "concierges": {
+      "type": "hasOne",
+      "model": "Concierge",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

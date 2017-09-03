@@ -1,0 +1,2062 @@
+paths:
+  /Photos:
+    get:
+      tags:
+        - Photo
+      operationId: Photo.getContainers
+      parameters: []
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/x-any'
+      deprecated: false
+    post:
+      tags:
+        - Photo
+      operationId: Photo.createContainer
+      parameters:
+        - name: options
+          in: body
+          required: false
+          schema:
+            type: object
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  '/Photos/{container}':
+    delete:
+      tags:
+        - Photo
+      operationId: Photo.destroyContainer
+      parameters:
+        - name: container
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              undefined:
+                type: object
+      deprecated: false
+    get:
+      tags:
+        - Photo
+      operationId: Photo.getContainer
+      parameters:
+        - name: container
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  '/Photos/{container}/files':
+    get:
+      tags:
+        - Photo
+      operationId: Photo.getFiles
+      parameters:
+        - name: container
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/x-any'
+      deprecated: false
+  '/Photos/{container}/files/{file}':
+    get:
+      tags:
+        - Photo
+      operationId: Photo.getFile
+      parameters:
+        - name: container
+          in: path
+          required: true
+          type: string
+        - name: file
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    delete:
+      tags:
+        - Photo
+      operationId: Photo.removeFile
+      parameters:
+        - name: container
+          in: path
+          required: true
+          type: string
+        - name: file
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              undefined:
+                type: object
+      deprecated: false
+  '/Photos/{container}/upload':
+    post:
+      tags:
+        - Photo
+      operationId: Photo.upload
+      parameters:
+        - name: container
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+      deprecated: false
+  '/Photos/{container}/download/{file}':
+    get:
+      tags:
+        - Photo
+      operationId: Photo.download
+      parameters:
+        - name: container
+          in: path
+          required: true
+          type: string
+        - name: file
+          in: path
+          required: true
+          type: string
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Cruises/{id}/photos/{fk}':
+    get:
+      tags:
+        - Cruise
+      summary: Find a related item by id for photos.
+      operationId: Cruise.prototype.__findById__photos
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for photos
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Photo'
+      deprecated: false
+    delete:
+      tags:
+        - Cruise
+      summary: Delete a related item by id for photos.
+      operationId: Cruise.prototype.__destroyById__photos
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for photos
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - Cruise
+      summary: Update a related item by id for photos.
+      operationId: Cruise.prototype.__updateById__photos
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for photos
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Photo'
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Photo'
+      deprecated: false
+  '/Cruises/{id}/ships':
+    get:
+      tags:
+        - Cruise
+      summary: Fetches hasOne relation ships.
+      operationId: Cruise.prototype.__get__ships
+      parameters:
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+    post:
+      tags:
+        - Cruise
+      summary: Creates a new instance in ships of this model.
+      operationId: Cruise.prototype.__create__ships
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Ship'
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+    put:
+      tags:
+        - Cruise
+      summary: Update ships of this model.
+      operationId: Cruise.prototype.__update__ships
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Ship'
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+    delete:
+      tags:
+        - Cruise
+      summary: Deletes ships of this model.
+      operationId: Cruise.prototype.__destroy__ships
+      parameters:
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Cruises/{id}/photos':
+    get:
+      tags:
+        - Cruise
+      summary: Queries photos of Cruise.
+      operationId: Cruise.prototype.__get__photos
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Photo'
+      deprecated: false
+    post:
+      tags:
+        - Cruise
+      summary: Creates a new instance in photos of this model.
+      operationId: Cruise.prototype.__create__photos
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Photo'
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Photo'
+      deprecated: false
+    delete:
+      tags:
+        - Cruise
+      summary: Deletes all photos of this model.
+      operationId: Cruise.prototype.__delete__photos
+      parameters:
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Cruises/{id}/photos/count':
+    get:
+      tags:
+        - Cruise
+      summary: Counts photos of Cruise.
+      operationId: Cruise.prototype.__count__photos
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Cruises:
+    post:
+      tags:
+        - Cruise
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Cruise.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Cruise'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+    put:
+      tags:
+        - Cruise
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Cruise.upsert__put_Cruises
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Cruise'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+    patch:
+      tags:
+        - Cruise
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Cruise.upsert__patch_Cruises
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Cruise'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+    get:
+      tags:
+        - Cruise
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Cruise.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cruise'
+      deprecated: false
+  /Cruises/replaceOrCreate:
+    post:
+      tags:
+        - Cruise
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Cruise.replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Cruise'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+  /Cruises/upsertWithWhere:
+    post:
+      tags:
+        - Cruise
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Cruise.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Cruise'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+  '/Cruises/{id}/exists':
+    get:
+      tags:
+        - Cruise
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Cruise.exists__get_Cruises_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Cruises/{id}':
+    head:
+      tags:
+        - Cruise
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Cruise.exists__head_Cruises_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Cruise
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Cruise.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+    delete:
+      tags:
+        - Cruise
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Cruise.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - Cruise
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'Cruise.prototype.updateAttributes__put_Cruises_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Cruise'
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+    patch:
+      tags:
+        - Cruise
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'Cruise.prototype.updateAttributes__patch_Cruises_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Cruise'
+        - name: id
+          in: path
+          description: Cruise id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+  '/Cruises/{id}/replace':
+    post:
+      tags:
+        - Cruise
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: Cruise.replaceById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Cruise'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+  /Cruises/findOne:
+    get:
+      tags:
+        - Cruise
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Cruise.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cruise'
+      deprecated: false
+  /Cruises/update:
+    post:
+      tags:
+        - Cruise
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Cruise.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Cruise'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Cruises/count:
+    get:
+      tags:
+        - Cruise
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Cruise.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  '/Ships/{id}/concierges':
+    get:
+      tags:
+        - Ship
+      summary: Fetches hasOne relation concierges.
+      operationId: Ship.prototype.__get__concierges
+      parameters:
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+        - name: id
+          in: path
+          description: Ship id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+    post:
+      tags:
+        - Ship
+      summary: Creates a new instance in concierges of this model.
+      operationId: Ship.prototype.__create__concierges
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Concierge'
+        - name: id
+          in: path
+          description: Ship id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+    put:
+      tags:
+        - Ship
+      summary: Update concierges of this model.
+      operationId: Ship.prototype.__update__concierges
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Concierge'
+        - name: id
+          in: path
+          description: Ship id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+    delete:
+      tags:
+        - Ship
+      summary: Deletes concierges of this model.
+      operationId: Ship.prototype.__destroy__concierges
+      parameters:
+        - name: id
+          in: path
+          description: Ship id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /Ships:
+    post:
+      tags:
+        - Ship
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Ship.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Ship'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+    put:
+      tags:
+        - Ship
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Ship.upsert__put_Ships
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Ship'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+    patch:
+      tags:
+        - Ship
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Ship.upsert__patch_Ships
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Ship'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+    get:
+      tags:
+        - Ship
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Ship.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Ship'
+      deprecated: false
+  /Ships/replaceOrCreate:
+    post:
+      tags:
+        - Ship
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Ship.replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Ship'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+  /Ships/upsertWithWhere:
+    post:
+      tags:
+        - Ship
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Ship.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Ship'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+  '/Ships/{id}/exists':
+    get:
+      tags:
+        - Ship
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Ship.exists__get_Ships_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Ships/{id}':
+    head:
+      tags:
+        - Ship
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Ship.exists__head_Ships_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Ship
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Ship.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+    delete:
+      tags:
+        - Ship
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Ship.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - Ship
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'Ship.prototype.updateAttributes__put_Ships_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Ship'
+        - name: id
+          in: path
+          description: Ship id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+    patch:
+      tags:
+        - Ship
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'Ship.prototype.updateAttributes__patch_Ships_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Ship'
+        - name: id
+          in: path
+          description: Ship id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+  '/Ships/{id}/replace':
+    post:
+      tags:
+        - Ship
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: Ship.replaceById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Ship'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+  /Ships/findOne:
+    get:
+      tags:
+        - Ship
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Ship.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Ship'
+      deprecated: false
+  /Ships/update:
+    post:
+      tags:
+        - Ship
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Ship.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Ship'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Ships/count:
+    get:
+      tags:
+        - Ship
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Ship.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Concierges:
+    post:
+      tags:
+        - Concierge
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Concierge.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Concierge'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+    put:
+      tags:
+        - Concierge
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Concierge.upsert__put_Concierges
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Concierge'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+    patch:
+      tags:
+        - Concierge
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Concierge.upsert__patch_Concierges
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Concierge'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+    get:
+      tags:
+        - Concierge
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Concierge.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Concierge'
+      deprecated: false
+  /Concierges/replaceOrCreate:
+    post:
+      tags:
+        - Concierge
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Concierge.replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Concierge'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+  /Concierges/upsertWithWhere:
+    post:
+      tags:
+        - Concierge
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Concierge.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Concierge'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+  '/Concierges/{id}/exists':
+    get:
+      tags:
+        - Concierge
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Concierge.exists__get_Concierges_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Concierges/{id}':
+    head:
+      tags:
+        - Concierge
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Concierge.exists__head_Concierges_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Concierge
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Concierge.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+    delete:
+      tags:
+        - Concierge
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Concierge.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - Concierge
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'Concierge.prototype.updateAttributes__put_Concierges_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Concierge'
+        - name: id
+          in: path
+          description: Concierge id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+    patch:
+      tags:
+        - Concierge
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'Concierge.prototype.updateAttributes__patch_Concierges_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Concierge'
+        - name: id
+          in: path
+          description: Concierge id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+  '/Concierges/{id}/replace':
+    post:
+      tags:
+        - Concierge
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: Concierge.replaceById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Concierge'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+  /Concierges/findOne:
+    get:
+      tags:
+        - Concierge
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Concierge.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Concierge'
+      deprecated: false
+  /Concierges/update:
+    post:
+      tags:
+        - Concierge
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Concierge.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Concierge'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Concierges/count:
+    get:
+      tags:
+        - Concierge
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Concierge.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Requests:
+    post:
+      tags:
+        - Request
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Request.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Request'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+    put:
+      tags:
+        - Request
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Request.upsert__put_Requests
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Request'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+    patch:
+      tags:
+        - Request
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Request.upsert__patch_Requests
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Request'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+    get:
+      tags:
+        - Request
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Request.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Request'
+      deprecated: false
+  /Requests/replaceOrCreate:
+    post:
+      tags:
+        - Request
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Request.replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Request'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+  /Requests/upsertWithWhere:
+    post:
+      tags:
+        - Request
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Request.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Request'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+  '/Requests/{id}/exists':
+    get:
+      tags:
+        - Request
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Request.exists__get_Requests_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Requests/{id}':
+    head:
+      tags:
+        - Request
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Request.exists__head_Requests_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Request
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Request.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+    delete:
+      tags:
+        - Request
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Request.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - Request
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'Request.prototype.updateAttributes__put_Requests_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Request'
+        - name: id
+          in: path
+          description: Request id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+    patch:
+      tags:
+        - Request
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'Request.prototype.updateAttributes__patch_Requests_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Request'
+        - name: id
+          in: path
+          description: Request id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+  '/Requests/{id}/replace':
+    post:
+      tags:
+        - Request
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: Request.replaceById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Request'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+  /Requests/findOne:
+    get:
+      tags:
+        - Request
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Request.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Request'
+      deprecated: false
+  /Requests/update:
+    post:
+      tags:
+        - Request
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Request.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Request'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Requests/count:
+    get:
+      tags:
+        - Request
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Request.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+definitions:
+  x-any:
+    properties: {}
+  Photo:
+    properties:
+      id:
+        type: number
+        format: double
+      cruiseId:
+        type: number
+        format: double
+    additionalProperties: false
+  Ship:
+    properties:
+      name:
+        type: string
+      capacity:
+        type: number
+        format: double
+      id:
+        type: number
+        format: double
+      cruiseId:
+        type: number
+        format: double
+    required:
+      - name
+      - capacity
+    additionalProperties: false
+  Cruise:
+    properties:
+      name:
+        type: string
+      duration-in-days:
+        type: number
+        format: double
+      ports:
+        type: array
+        items:
+          type: string
+      party-size:
+        type: number
+        format: double
+      leave:
+        type: string
+        format: date-time
+      return:
+        type: string
+        format: date-time
+      id:
+        type: number
+        format: double
+    required:
+      - name
+      - duration-in-days
+      - ports
+      - party-size
+      - leave
+      - return
+    additionalProperties: false
+  Concierge:
+    properties:
+      name:
+        type: string
+      id:
+        type: number
+        format: double
+      shipId:
+        type: number
+        format: double
+    additionalProperties: false
+  Request:
+    properties:
+      name:
+        type: string
+      id:
+        type: number
+        format: double
+    additionalProperties: false
+basePath: /api
+swagger: '2.0'
+info:
+  x-ibm-name: princessonboardapi
+  version: 1.0.0
+  title: PrincessOnboardAPI
+schemes:
+  - https
+host: $(catalog.host)
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - clientIdHeader: []
+    clientSecretHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)

@@ -1,0 +1,51 @@
+{
+  "name": "Cruise",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "duration-in-days": {
+      "type": "number",
+      "required": true
+    },
+    "ports": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "party-size": {
+      "type": "number",
+      "required": true
+    },
+    "leave": {
+      "type": "date",
+      "required": true
+    },
+    "return": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ships": {
+      "type": "hasOne",
+      "model": "Ship",
+      "foreignKey": ""
+    },
+    "photos": {
+      "type": "hasMany",
+      "model": "Photo",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
